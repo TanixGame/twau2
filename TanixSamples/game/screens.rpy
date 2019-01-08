@@ -251,11 +251,13 @@ screen quick_menu():
             style_prefix "quick"
 
             xalign 0.5
-            yalign 1.0
-
-            textbutton _("Back") action Rollback()
+            yalign 0.98
+            
+            #Tanix Editar TEXT BUTTONS para ser imagem na tela
             textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Inv") action ShowMenu('inventory')
+            textbutton _("recipe") action ShowMenu('recipe')
+            textbutton _("books") action ShowMenu('books')
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Q.Save") action QuickSave()
@@ -301,7 +303,10 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            imagebutton:
+                idle "gui/main_idle.png"
+                hover "gui/main_hover.png"
+                action Start()
 
         else:
 
@@ -309,9 +314,15 @@ screen navigation():
 
             textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        imagebutton:
+                idle "gui/load_idle.png"
+                hover "gui/load_hover.png"
+                action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        imagebutton:
+                idle "gui/options_idle.png"
+                hover "gui/options_hover.png"
+                action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -480,6 +491,77 @@ screen game_menu(title, scroll=None, yinitial=0.0):
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
 
+screen subMenuGame(title, subItem, book=None):
+
+    style_prefix "submenu"
+
+    add gui.main_menu_background
+
+    frame:
+        style "game_menu_outer_frame"
+
+        hbox:
+
+            ## Reserve space for the navigation section.
+            frame:
+                style "game_menu_navigation_frame"
+
+            frame:
+                style "game_menu_content_frame"
+
+                viewport:
+                    yinitial 1.0
+                    scrollbars "vertical"
+                    mousewheel True
+                    draggable True
+                    pagekeys True
+
+                    side_yfill True
+
+                    vbox:
+                        transclude
+                        
+                        if subItem == "inventory1":
+                            label _("Minhas Receitas")
+                        
+                        elif subItem == "inventory2":
+                            label _("Meus Ingredientes")
+
+                        elif subItem == "inventory3":
+                            label _("Minha Comidinha")
+
+                        elif subItem == "recipe":
+                            label _("Receitas disponíveis")
+
+                            for i in gameCooking.getRecipeNames():
+                                textbutton _(i)
+
+                        elif subItem == "books":
+                            label _("Livros Disponíveis")
+
+                            for i in gameCooking.getBookNames():
+                                textbutton _(i) action ShowMenu("addBook",book=i)
+
+                            label _("Livros Disponíveis")
+                            for i in localPlayer.listrecipe():
+                                textbutton _(i)
+
+                        elif subItem == "addBooks":
+                            label _("Livros Disponíveis - Atualizado")
+
+                            label "Teste - %s" % book
+
+                            for i in gameCooking.getBookNames():
+                                textbutton _(i) action ShowMenu("addBook",book=i)
+
+                            label _("Livros Disponíveis")
+                            for i in localPlayer.listrecipe():
+                                textbutton _(i)
+
+    textbutton _("Voltar"):
+        style "return_button"
+
+        action Return()    
 
 style game_menu_outer_frame is empty
 style game_menu_navigation_frame is empty
@@ -916,6 +998,84 @@ screen history():
 
         if not _history_list:
             label _("The dialogue history is empty.")
+
+screen inventory(subMenu=None):
+
+    tag menu
+
+    ## Avoid predicting this screen, as it can be very large.
+    predict False
+
+    use subMenuGame(_("Inventário"), subMenu):
+
+        style_prefix "inventorySub"
+
+    vbox:
+
+        label _("Inventário")
+
+        xpos gui.navigation_xpos
+        yalign 0.5
+
+        textbutton _("My Items") action ShowMenu("inventory","inventory1")
+        textbutton _("General Items") action ShowMenu("inventory","inventory2")
+        textbutton _("Skills") action ShowMenu("inventory", "inventory3")
+        
+
+screen recipe():
+
+    tag menu
+
+    ## Avoid predicting this screen, as it can be very large.
+    predict False
+
+    use subMenuGame(_("Receitas"), "recipe"):
+
+        style_prefix "recipeSub"
+        
+
+screen books(subMenu="books",book=None):
+
+    tag menu
+
+    ## Avoid predicting this screen, as it can be very large.
+    predict False
+
+    use subMenuGame(_("Meus Livros"), subMenu,book=book):
+
+        style_prefix "booksSub"
+
+screen addBook(book=None):
+
+    ## Ensure other screens do not get input while this screen is displayed.
+    modal True
+
+    zorder 200
+
+    style_prefix "confirm"
+
+    add "gui/overlay/confirm.png"
+
+    frame:
+
+        vbox:
+            xalign .5
+            yalign .5
+            spacing 30
+
+            label _("Deseja Adicionar o Livro"):
+                style "confirm_prompt"
+                xalign 0.5
+
+            hbox:
+                xalign 0.5
+                spacing 100
+
+                textbutton _("Sim") action ShowMenu("books", "addBooks", book=book), Hide("addBook")
+                textbutton _("Não") action Hide("addBook")
+
+    ## Right-click and escape answer "no".
+    key "game_menu" action Hide("addBook")
 
 
 ## This determines what tags are allowed to be displayed on the history screen.
