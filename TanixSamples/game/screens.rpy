@@ -522,13 +522,15 @@ screen subMenuGame(title, subItem, book=None):
                         transclude
                         
                         if subItem == "inventory1":
-                            label _("Minhas Receitas")
+                            label _("My Items")
+                            for i in playerIventory.listItems():
+                                textbutton _(i.name)
                         
                         elif subItem == "inventory2":
-                            label _("Meus Ingredientes")
+                            label _("Key Items")
 
                         elif subItem == "inventory3":
-                            label _("Minha Comidinha")
+                            label _("Skills")
 
                         elif subItem == "recipe":
                             label _("Receitas disponíveis")
@@ -1006,19 +1008,19 @@ screen inventory(subMenu=None):
     ## Avoid predicting this screen, as it can be very large.
     predict False
 
-    use subMenuGame(_("Inventário"), subMenu):
+    use subMenuGame(_("Inventory"), subMenu):
 
         style_prefix "inventorySub"
 
     vbox:
 
-        label _("Inventário")
+        label _("Inventory")
 
         xpos gui.navigation_xpos
         yalign 0.5
 
         textbutton _("My Items") action ShowMenu("inventory","inventory1")
-        textbutton _("General Items") action ShowMenu("inventory","inventory2")
+        textbutton _("Key Items") action ShowMenu("inventory","inventory2")
         textbutton _("Skills") action ShowMenu("inventory", "inventory3")
         
 

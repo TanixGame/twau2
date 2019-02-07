@@ -45,6 +45,41 @@
     \n
     \n"""
 
+    class inventory(object):
+        def __init__(self):
+            '''
+            init Variables
+            '''            
+            self.items = []
+
+        def addItem(self, item):
+            self.items.append(item)
+
+        def useItem(self, itemID):
+            if itemID < len(self.items):
+                return self.items.pop(itemID)
+            else:
+                return False
+
+        def listItems(self):
+            return self.items
+
+    class item(object):
+
+        def __init__(self, id, name):
+            '''
+            Init Variables
+            '''
+            self.id = id
+            self.name = name
+            self.quantity = 1
+
+
+    playerIventory = inventory()
+
+    variableBox = "gui/narratorBox.png"
+
+
 #Defining images
 
 image black = '#000000'
@@ -146,3 +181,4 @@ label start:
     bigby "Once you add a story, pictures, and music, you can release it to the world!"
 
     jump chapter1
+
