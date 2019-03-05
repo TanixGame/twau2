@@ -1,8 +1,9 @@
 ﻿init python:
+    from baseClasses import *
     #Define and Init Python
     config.developer = True
     #config.gamedir
-
+    config.main_menu_music = "music/intro_game.mp3"
     introLines = """
     {size=+10}THE TAW2{color=#303030}
     \n\n
@@ -45,47 +46,16 @@
     \n
     \n"""
 
-    class inventory(object):
-        def __init__(self):
-            '''
-            init Variables
-            '''            
-            self.items = []
-
-        def addItem(self, item):
-            self.items.append(item)
-
-        def useItem(self, itemID):
-            if itemID < len(self.items):
-                return self.items.pop(itemID)
-            else:
-                return False
-
-        def listItems(self):
-            return self.items
-
-    class item(object):
-
-        def __init__(self, id, name):
-            '''
-            Init Variables
-            '''
-            self.id = id
-            self.name = name
-            self.quantity = 1
-
-
+    
     playerIventory = inventory()
 
-    variableBox = "gui/narratorBox.png"
+    variableBox = "gui/narrator.png"
 
 
 #Defining images
 
 image black = '#000000'
 image white = '#FFFFFF'
-
-image introMovie = Movie(play="movies/clouds3.avi", size=(1280, 720))
 
 image TAW2TILE = Text("{size=+20}*{color=#252525}* TAW2 *{/color}*{/size}", text_align=0.5)
 
@@ -102,7 +72,6 @@ label splashscreen:
     with Pause(1)
     nvl clear
 
-    scene introMovie
     play music "music/intro_game.mp3" loop
 
     show TAW2TILE:
@@ -117,45 +86,63 @@ label splashscreen:
 
     with Pause(25)
     
-    show text "{size=+10}{color=#151515}PRODUCT MANAGER: RACHEL{/color}{/size}"
+    show text "{size=+10}{color=#FFFFFF}PRODUCT MANAGER: RACHEL{/color}{/size}"
     with dissolve
     pause 3
     hide text
     with dissolve
 
-    show text "{size=+10}{color=#151515}ARTISTS: KASSIA/LUE/XEEN{/color}{/size}"
+    show temp_bigby_wolf at left
     with dissolve
     pause 3
     hide text
     with dissolve
 
-    show text "{size=+10}{color=#151515}DEVELOPER LEAD: RENEE{/color}{/size}"
+    show text "{size=+10}{color=#FFFFFF}ARTISTS: KASSIA/LUE/XEEN{/color}{/size}"
     with dissolve
     pause 3
     hide text
     with dissolve
 
-    show text "{size=+10}{color=#151515}DEVELOPER: TANIX{/color}{/size}"
+    show text "{size=+10}{color=#FFFFFF}DEVELOPER LEAD: RENEE{/color}{/size}"
     with dissolve
     pause 3
     hide text
     with dissolve
 
-    show text "{size=+10}{color=#151515}WRITER: GRAY{/color}{/size}"
+    show text "{size=+10}{color=#FFFFFF}DEVELOPER: TANIX/ZORP{/color}{/size}"
     with dissolve
     pause 3
     hide text
     with dissolve
 
-    show text "{size=+10}{color=#151515}MUSIC: BRUNO{/color}{/size}"
+    show text "{size=+10}{color=#FFFFFF}WRITER: GRAY{/color}{/size}"
     with dissolve
     pause 3
     hide text
     with dissolve
 
-    show text "{size=+10}{color=#151515}Whaterver is needed to add{/color}{/size}"
+    show temp_bigby_wolf at right
     with dissolve
     pause 3
+    hide text
+    with dissolve
+
+    show text "{size=+10}{color=#FFFFFF}MUSIC: BRUNO{/color}{/size}"
+    with dissolve
+    pause 3
+    hide text
+    with dissolve
+
+    show text "{size=+10}{color=#FFFFFF}Whaterver is needed to add{/color}{/size}"
+    with dissolve
+    pause 3
+    hide text
+    with dissolve
+
+    show temp_bigby_wolf at center
+    with dissolve
+    pause 5
     hide text
     with dissolve
 
@@ -176,9 +163,9 @@ label start:
 
     # These display lines of dialogue.
 
-    bigby "You've created a new Ren'Py game."
+    bigby "{color=#000000}You've created a new Ren'Py game.{/color}"
 
-    bigby "Once you add a story, pictures, and music, you can release it to the world!"
+    bigby "{color=#000000}Once you add a story, pictures, and music, you can release it to the world!{/color}"
 
     jump chapter1
 

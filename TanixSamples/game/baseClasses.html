@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module baseClasses</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>baseClasses</strong></big></big> (version 1.0.0)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Ctemp%5Cprojects%5Ctwau%5Cgame%5Cbaseclasses.py">c:\temp\projects\twau\game\baseclasses.py</a></font></td></tr></table>
+    <p><tt>Contains&nbsp;the&nbsp;Base&nbsp;Class&nbsp;of&nbsp;TWAU.<br>
+&nbsp;<br>
+This&nbsp;package&nbsp;contains&nbsp;the&nbsp;base&nbsp;classes&nbsp;to&nbsp;be&nbsp;used&nbsp;in&nbsp;the&nbsp;TWAU&nbsp;game&nbsp;for&nbsp;example&nbsp;Player.<br>
+&nbsp;<br>
+The&nbsp;Programmer&nbsp;will&nbsp;use&nbsp;the&nbsp;classes&nbsp;and&nbsp;update&nbsp;this&nbsp;file&nbsp;in&nbsp;order&nbsp;to&nbsp;have&nbsp;all&nbsp;changes<br>
+&nbsp;in&nbsp;one&nbsp;place&nbsp;and&nbsp;know&nbsp;where&nbsp;the&nbsp;changes&nbsp;will&nbsp;be&nbsp;done.<br>
+&nbsp;<br>
+Tested&nbsp;and&nbsp;build&nbsp;in:&nbsp;Renpy&nbsp;X<br>
+&nbsp;<br>
+Example&nbsp;of&nbsp;use<br>
+&nbsp;<br>
+#Player&nbsp;Creation<br>
+newPlayer&nbsp;=&nbsp;Player()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;get&nbsp;the&nbsp;health&nbsp;of&nbsp;the&nbsp;<a href="#player">player</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;newPlaner.getHealth()</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="baseClasses.html#inventory">inventory</a>
+</font></dt><dt><font face="helvetica, arial"><a href="baseClasses.html#item">item</a>
+</font></dt><dt><font face="helvetica, arial"><a href="baseClasses.html#player">player</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="inventory">class <strong>inventory</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Iventory&nbsp;Class&nbsp;where&nbsp;<a href="#inventory">inventory</a>&nbsp;is&nbsp;defined<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="inventory-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Init&nbsp;Iventory<br>
+set&nbsp;items&nbsp;attribute</tt></dd></dl>
+
+<dl><dt><a name="inventory-addItem"><strong>addItem</strong></a>(self, item)</dt><dd><tt>Add&nbsp;one&nbsp;<a href="#item">item</a>&nbsp;to&nbsp;the&nbsp;list</tt></dd></dl>
+
+<dl><dt><a name="inventory-listItems"><strong>listItems</strong></a>(self)</dt><dd><tt>Return&nbsp;one&nbsp;<a href="#item">item</a>&nbsp;from&nbsp;the&nbsp;list</tt></dd></dl>
+
+<dl><dt><a name="inventory-useItem"><strong>useItem</strong></a>(self, itemID)</dt><dd><tt>Pop&nbsp;one&nbsp;<a href="#item">item</a>&nbsp;from&nbsp;the&nbsp;list<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;<a href="#item">item</a>&nbsp;that&nbsp;it's&nbsp;pop<br>
+Return&nbsp;False&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;<a href="#item">item</a>&nbsp;in&nbsp;the&nbsp;list</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="item">class <strong>item</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="item-__init__"><strong>__init__</strong></a>(self, id, name)</dt><dd><tt>Init&nbsp;Variables</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="player">class <strong>player</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Player&nbsp;Class&nbsp;where&nbsp;we&nbsp;can&nbsp;init&nbsp;the&nbsp;<a href="#player">player</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="player-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Init&nbsp;of&nbsp;the&nbsp;Player<br>
+&nbsp;<br>
+The&nbsp;following&nbsp;attributes&nbsp;will&nbsp;be&nbsp;instantiated:<br>
+&nbsp;iventory</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__copyright__</strong> = 'Copyright 2019, by Tanix'<br>
+<strong>__email__</strong> = 'keitaro.haitou@gmail.com'<br>
+<strong>__license__</strong> = 'GNU General Public License'<br>
+<strong>__maintainer__</strong> = 'Tanix'<br>
+<strong>__status__</strong> = 'Prototype'</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Author</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Tanix</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#7799ee">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Credits</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#7799ee"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">TWAU&nbsp;2&nbsp;Project</td></tr></table>
+</body></html>
